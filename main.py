@@ -9,8 +9,9 @@ import json
 # Open and read the JSON file
 with open('api_key.json', 'r') as file:
     data = json.load(file)
-apiKey = data.key
-apiSecret = data.secret
+    print(data)
+apiKey = data["key"]
+apiSecret = data["secret"]
 # Load environment variables
 API_KEY = os.getenv('BINANCE_US_API_KEY', apiKey)
 API_SECRET = os.getenv('BINANCE_US_API_SECRET', apiSecret)
@@ -19,16 +20,17 @@ API_SECRET = os.getenv('BINANCE_US_API_SECRET', apiSecret)
 client = Client(API_KEY, API_SECRET, tld='us')
 
 # Parameters
-#XRP
+#BTC
 # SYMBOL = 'BTCUSD'  # Trading pair
 # TRADE_QUANTITY = 0.001  # Quantity to trade (adjust as needed)
 # PROFIT_MARGIN = 0.001  # Profit margin as a fraction (e.g., 0.1% = 0.001)
 # CHECK_INTERVAL = 10  # Time in seconds between checks
 
+#XRP
 SYMBOL = 'XRPUSDT'  # Trading pair
 TRADE_QUANTITY = 1  # Quantity to trade (adjust as needed)
 PROFIT_MARGIN = 0.001  # Profit margin as a fraction (e.g., 0.1% = 0.001)
-CHECK_INTERVAL = 20  # Time in seconds between checks
+CHECK_INTERVAL = 10  # Time in seconds between checks
 
 # Logger function
 def log_message(message):
