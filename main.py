@@ -9,10 +9,11 @@ import json
 # Open and read the JSON file
 with open('api_key.json', 'r') as file:
     data = json.load(file)
-
+apiKey = data.key
+apiSecret = data.secret
 # Load environment variables
-API_KEY = os.getenv('BINANCE_US_API_KEY', 'JmetcaoGgUBWuVdrVg82YxTNKUCSWP09U0JHz1WlyntE2GIQVpxXHjQoIpfu6DSZ')
-API_SECRET = os.getenv('BINANCE_US_API_SECRET', 'p6tTHsfLpD6Xy8IVZAwpADgSi2V5VYVDMRsOtgbPvYLZfLNskxqhoxfzqzicIc5r')
+API_KEY = os.getenv('BINANCE_US_API_KEY', apiKey)
+API_SECRET = os.getenv('BINANCE_US_API_SECRET', apiSecret)
 
 # Initialize Binance.US client
 client = Client(API_KEY, API_SECRET, tld='us')
