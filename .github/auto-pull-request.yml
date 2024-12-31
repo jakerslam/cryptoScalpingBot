@@ -1,0 +1,25 @@
+name: Auto Pull Request
+
+on:
+  push:
+    branches:
+      - update-code  # Branch for updates
+
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Automated update to trading bot"
+          branch: update-code
+          title: "Automated Pull Request: Update Trading Bot Logic"
+          body: |
+            This pull request contains automated updates to the trading bot.
+          base: main
